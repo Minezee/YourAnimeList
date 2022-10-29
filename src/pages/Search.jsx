@@ -2,7 +2,7 @@
 const Search = () => {
     return (
         <div className="">
-            Searsch
+            Search
         </div>
     )
 }
