@@ -2,15 +2,16 @@ import {AiOutlineSearch} from 'react-icons/ai'
 
 const Searchbar = () => {
     return (
-        <form className="absolute top-6 right-0 text-purple mr-3 bg-grey rounded-sm">
+        <form className="absolute top-6 right-0 text-white mr-3 bg-grey rounded-sm w-[175px]">
             <input 
             type="search" 
             value=""
             name="q"
             placeholder="Search..."
-            className="bg-transparent placeholder:text-purple w-[150px] pl-1"
+            className=" placeholder:text-white placeholder:text-sm placeholder:font-light
+            bg-transparent w-[150px] h-[28px] pl-2 "
             />
-            <button className='mr-3 w-3 h-3'>
+            <button className='mr-3 w-3 h-3 align-sub'>
             <AiOutlineSearch />
             </button>
         </form>
