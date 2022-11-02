@@ -7,8 +7,8 @@ import { menuItems } from '../assets/MenuItems';
 import '../assets/dropdown.css'
 
 const DropDown = ({ submenu, handleClick, heading, menu }) => {
-    console.log( "head =" + heading)
-    console.log("menu =" +menu)
+    // console.log( "head =" + heading)
+    // console.log("menu =" +menu)
     return (
         <div className={` ${heading === menu ? "block" : "hidden"}`}>
             {submenu.map((item) => {
