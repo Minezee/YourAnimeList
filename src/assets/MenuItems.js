@@ -1,57 +1,56 @@
+import { AiFillHome } from "react-icons/ai";
+import { MdOndemandVideo } from "react-icons/md";
+import { FaBookOpen } from "react-icons/fa"
+
 export const menuItems = [
     {
-        title: 'Home',
-        url: '/',
+        name: 'Home',
+        url: '/YourAnimeList/',
+        icons: AiFillHome,
     },
     {
-        title: 'Anime',
-        url: '#',
+        name: 'Anime',
+        icons: MdOndemandVideo,
+        index: 1,
         submenu: [
             {
-                title: 'All Anime',
-                url: '/anime',
+                name: 'All Anime',
+                url: '/YourAnimeList/',
             },
             {
-                title: 'Anime Search',
-                url: '/anime/search',
+                name: 'Top Anime',
+                url: '/YourAnimeList/',
             },
             {
-                title: 'Top Anime',
-                url: '/anime/TopAnime',
+                name: 'Seasonal Anime',
+                url: '/YourAnimeList/',
             },
             {
-                title: 'Seasonal Anime',
-                url: '/anime/seasonal',
-            },
-            {
-                title: 'Anime Genre',
-                url: '/anime/genre',
+                name: 'Anime Search',
+                url: '/YourAnimeList/',
             },
         ]
     },
     {
-        title: 'Manga',
-        url: '#',
+        name: 'Manga',
+        icons: FaBookOpen,
+        index: 2,
         submenu: [
             {
-                title: 'All Manga',
-                url: '/manga',
+                name: 'All Manga',
+                url: '/YourAnimeList/',
             },
             {
-                title: 'Manga Search',
-                url: '/manga/search',
+                name: 'Top Manga',
+                url: '/YourAnimeList/',
             },
             {
-                title: 'Top Manga',
-                url: '/manga/TopManga',
+                name: 'Seasonal Manga',
+                url: '/YourAnimeList/',
             },
             {
-                title: 'Seasonal Manga',
-                url: '/manga/seasonal',
-            },
-            {
-                title: 'Manga Genre',
-                url: '/manga/genre',
+                name: 'Manga Search',
+                url: '/YourAnimeList/',
             },
         ]
     },
