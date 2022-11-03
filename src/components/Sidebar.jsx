@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { HiOutlineMenu, } from 'react-icons/hi'
-import { RiCloseLine } from 'react-icons/ri'
-import { Link, NavLink } from 'react-router-dom';
+import { RiCloseLine, RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
+import { NavLink } from 'react-router-dom';
 
 import { menuItems } from '../assets/MenuItems';
 import '../assets/dropdown.css'
 
-const DropDown = ({ submenu, handleClick, heading, menu }) => {
-    // console.log( "head =" + heading)
-    // console.log("menu =" +menu)
+const DropDown = ({ submenu, handleClick, menuOpen, menu }) => {
     return (
-        <div className={` ${heading === menu ? "block" : "hidden"}`}>
+        <div className={` ${menuOpen === menu ? "block" : "hidden"}`}>
             {submenu.map((item) => {
                 return (
                     <NavLink
@@ -27,30 +25,40 @@ const DropDown = ({ submenu, handleClick, heading, menu }) => {
     )
 }
 
-
 const NavLinks = ({ handleClick }) => {
-    const [heading, setHeading] = useState("");
+    const [menuOpen, setMenuOpen] = useState("");
     return (
         <div className='pl-5'>
             {menuItems.map((item) => {
                 return (
-                    <div key={item.name} className="group">
+                    <div key={item.name}>
                         <NavLink
                             to={item.url}
-                            className="flex flex-row justify-start items-center my-8 
-                    text-sm font-medium text-gray-400 hover:text-cyan-400"
+                            className="flex flex-row justify-between items-center my-8 
+                                        text-sm font-medium text-gray-400 hover:text-cyan-400"
                             onClick={() => {
-                                heading !== item.name ? setHeading(item.name) : setHeading("");
+                                menuOpen !== item.name ? setMenuOpen(item.name) : setMenuOpen("");
+                                !item.submenu && handleClick()
                             }}>
-                            <item.icons className="w-8 h-6 mr-2" />
-                            {item.name}
+                            <div className="flex flex-row items-center">
+                                <item.icons className="w-8 h-6 mr-2" />
+
+                                {item.name}
+                            </div>
+
+                            {item.submenu && 
+                            (menuOpen == item.name ?
+                                (<RiArrowUpSLine className="w-6 h-6 text-white mr-2" />)
+                                :
+                                (<RiArrowDownSLine className="w-6 h-6 text-white mr-2" />))
+                            }
                         </NavLink>
                         {item.submenu &&
                             <DropDown
                                 submenu={item.submenu}
-                                handleClick={handleClick} 
-                                heading={heading}
-                                menu={item.name}/>}
+                                handleClick={handleClick}
+                                menuOpen={menuOpen}
+                                menu={item.name} />}
                     </div>
                 )
             })}
