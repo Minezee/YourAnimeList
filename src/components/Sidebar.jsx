@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { HiOutlineMenu, } from 'react-icons/hi'
-import { RiCloseLine, RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
+import { RiCloseLine, RiArrowRightSLine } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom';
 
 import { menuItems } from '../assets/MenuItems';
@@ -27,7 +28,7 @@ const DropDown = ({ submenu, handleClick, menuOpen, menu }) => {
 const NavLinks = ({ handleClick }) => {
     const [menuOpen, setMenuOpen] = useState("");
     return (
-        <div className='pl-5'>
+        <nav className='pl-5'>
             {menuItems.map((item) => {
                 return (
                     <div key={item.name}>
@@ -45,10 +46,10 @@ const NavLinks = ({ handleClick }) => {
                                 {item.name}
                             </div>
 
-                            {item.submenu && 
-                            (<RiArrowDownSLine 
-                                className={`w-6 h-6 text-white mr-2 smooth-transition 
-                                ${menuOpen === item.name ? "rotate-180" : "rotate-0"}`} />)
+                            {item.submenu &&
+                                (<RiArrowRightSLine
+                                    className={`w-6 h-6 text-white mr-2
+                                ${menuOpen === item.name ? "rotate-90" : "rotate-0"}`} />)
                             }
                         </NavLink>
                         {item.submenu &&
@@ -60,14 +61,25 @@ const NavLinks = ({ handleClick }) => {
                     </div>
                 )
             })}
-        </div>
+        </nav>
     )
 }
 
 const Sidebar = () => {
-    const [isNavOpen, setIsNavOpen] = useState(false)
+    const [isNavOpen, setIsNavOpen] = useState(false);
+    const sidebarRef = useRef();
+
+    useEffect(() => {
+        let handler = e => {
+            if(!sidebarRef.current.contains(e.target)){
+                setIsNavOpen(false)
+            }
+        }
+        document.addEventListener('mousedown', handler)
+    },[])
+
     return (
-        <>
+        <aside>
             <div className="absolute md:hidden block top-6 left-3 z-30 bg-transparent">
                 {isNavOpen ? (
                     <RiCloseLine className="w-6 h-6 text-white mr-2"
@@ -78,16 +90,18 @@ const Sidebar = () => {
                 )}
             </div>
 
-            <div className={`absolute h-screen w-3/4 bg-gradient-to-tl from-white/5 
-            to-dark backdrop-blur-lg z-10 md:hidden smooth-transition
-            ${isNavOpen ? 'left-0' : 'left-[-75%]'}`}
-            >
-                <div className='text-center text-white'>
-                    <h1 className='text-base pt-6 font-bold'>YourAnimeList</h1>
-                    <NavLinks handleClick={() => setIsNavOpen(false)} />
+            <div className={`absolute w-screen h-screen ${isNavOpen ? 'left-0' : 'left-[-75%]'}`}>
+                <div className={`absolute h-screen w-3/4 bg-gradient-to-tl from-white/5
+                to-dark backdrop-blur-lg z-10 md:hidden smooth-transition`}
+                ref={sidebarRef}
+                >
+                    <div className='text-center text-white'>
+                        <h1 className='text-base pt-6 font-bold'>YourAnimeList</h1>
+                        <NavLinks handleClick={() => setIsNavOpen(false)} />
+                    </div>
                 </div>
             </div>
-        </>
+        </aside>
     )
 }
 

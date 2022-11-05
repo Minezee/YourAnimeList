@@ -30,7 +30,7 @@ const Container = ({ data, currentSlide }) => (
             return (
                 <div key={res.mal_id}
                     className={`min-w-[270px] h-[150px] bg-grey rounded-lg flex flex-row text-white mx-3`}
-                    style={{transform: `translateX(${-294 * (currentSlide - 1)}px)`}}>
+                    style={{ transform: `translateX(${-294 * (currentSlide - 1)}px)` }}>
                     <img
                         src={res.images.jpg.large_image_url}
                         alt={res.title}
@@ -39,7 +39,7 @@ const Container = ({ data, currentSlide }) => (
                         <h2 className="text-[10px] text-center font-bold">{res.title}</h2>
                         <p className="text-[8px] text-justify w-[150px] h-20 mt-2">{res.synopsis.slice(0, 200) + "..."}</p>
                         <NavLink
-                            className="absolute w-[55px] py-[3px] text-[8px] bg-dark rounded-sm text-center self-end border-white border-[1px] bottom-2"
+                            className="button bottom-2 absolute self-end"
                         >view more</NavLink>
                     </div>
                 </div>
@@ -62,10 +62,10 @@ const BigSlider = () => {
 
 
     const topAnime = response?.data?.slice(0, maxSlide);
-    
+
     useEffect(() => {
-        if(auto){
-        slideInterval = setInterval(() => {
+        if (auto) {
+            slideInterval = setInterval(() => {
                 nextSlide()
             }, interval);
         }
@@ -89,23 +89,33 @@ const BigSlider = () => {
     }
 
     return (
-        <div className="flex flex-row justify-center items-center">
-            <RiArrowLeftSLine
-                className="text-white h-6 w-6"
-                onClick={() => (prevSlide())} />
-            <div className="flex flex-row overflow-hidden w-[294px]">
-                {isFetching ?
-                    <ContainerLoad />
-                    :
-                    <Container
-                        data={topAnime}
-                        currentSlide={currentSlide} />
-                }
+        <>
+            <div className="flex flex-row justify-center items-center">
+                <RiArrowLeftSLine
+                    className="text-white h-6 w-6"
+                    onClick={() => prevSlide()} />
+                <div className="flex flex-row overflow-hidden w-[294px]">
+                    {isFetching ?
+                        <ContainerLoad />
+                        :
+                        <Container
+                            data={topAnime}
+                            currentSlide={currentSlide} />
+                    }
+                </div>
+                <RiArrowRightSLine
+                    className="text-white h-6 w-6"
+                    onClick={() => nextSlide()} />
             </div>
-            <RiArrowRightSLine
-                className="text-white h-6 w-6"
-                onClick={() => (nextSlide())} />
-        </div>
+            <div className="flex mx-auto my-2 justify-center">
+                {topAnime?.map((d, index) => (
+                    <div
+                        key={`dots-${index}`}
+                        onClick={() => setCurrentSlide(index + 1)}
+                        className={`${currentSlide === index + 1 ? 'bg-white' : 'bg-[#898282]'} w-[6px] h-[6px] rounded-full mx-1`}></div>
+                ))}
+            </div>
+        </>
     )
 }
 
