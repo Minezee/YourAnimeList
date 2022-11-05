@@ -9,14 +9,14 @@ import { useEffect } from "react";
 const ContainerLoad = () => (
     <div className="min-w-[270px] h-[150px] bg-grey rounded-lg mx-3">
         <div className="animate-pulse h-full flex flex-row">
-            <div className="h-full w-[106px] bg-dummy animate-pulse"></div>
+            <div className="h-full w-[106px] bg-dummy animate-pulse rounded-md"></div>
             <div className="flex flex-col m-2 w-40">
-                <div className="w-full h-3 bg-dummy"></div>
-                <div className="w-2/3 m-2 h-3 bg-dummy self-center"></div>
-                <div className="w-full h-2 mt-2 bg-dummy"></div>
-                <div className="w-full h-2 mt-2 bg-dummy"></div>
-                <div className="w-full h-2 mt-2 bg-dummy"></div>
-                <div className="w-[80%] h-2 mt-2 bg-dummy"></div>
+                <div className="w-full h-3 bg-dummy rounded-md"></div>
+                <div className="w-2/3 m-2 h-3 bg-dummy self-center rounded-md"></div>
+                <div className="w-full h-2 mt-2 bg-dummy rounded-md"></div>
+                <div className="w-full h-2 mt-2 bg-dummy rounded-md"></div>
+                <div className="w-full h-2 mt-2 bg-dummy rounded-md"></div>
+                <div className="w-[80%] h-2 mt-2 bg-dummy rounded-md"></div>
                 <div
                     className="w-[55px] h-[15px] bg-dummy rounded-sm self-end mt-4"></div>
             </div>
