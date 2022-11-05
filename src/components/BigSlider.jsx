@@ -39,7 +39,7 @@ const Container = ({ data, currentSlide }) => (
                         <h2 className="text-[10px] text-center font-bold">{res.title}</h2>
                         <p className="text-[8px] text-justify w-[150px] h-20 mt-2">{res.synopsis.slice(0, 200) + "..."}</p>
                         <NavLink
-                            className="w-[55px] py-[3px] text-[8px] bg-dark rounded-sm text-center self-end border-white border-[1px]"
+                            className="absolute w-[55px] py-[3px] text-[8px] bg-dark rounded-sm text-center self-end border-white border-[1px] bottom-2"
                         >view more</NavLink>
                     </div>
                 </div>
