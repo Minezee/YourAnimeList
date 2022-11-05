@@ -1,5 +1,5 @@
 import { Home } from './pages';
-import { Sidebar, Searchbar } from './components'
+import { PageNotFound,Sidebar, Searchbar } from './components'
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -12,9 +12,12 @@ const App = () => {
         <Searchbar />
       </div>
 
-      <Routes>
-        <Route path="/YourAnimeList" element={<Home />} />
-      </Routes>
+      <div className='mt-24 mx-3'>
+        <Routes>
+          <Route path="/YourAnimeList" element={<Home />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </div>
     </div>
   );
 };

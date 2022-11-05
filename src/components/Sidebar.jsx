@@ -4,7 +4,6 @@ import { RiCloseLine, RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom';
 
 import { menuItems } from '../assets/MenuItems';
-import '../assets/dropdown.css'
 
 const DropDown = ({ submenu, handleClick, menuOpen, menu }) => {
     return (
@@ -15,7 +14,7 @@ const DropDown = ({ submenu, handleClick, menuOpen, menu }) => {
                         to={item.url}
                         key={item.name}
                         className={`flex flex-row justify-start items-center my-8 ml-10
-            text-sm font-medium text-gray-400 hover:text-cyan-400`}
+            text-sm font-medium text-gray-400 hover:text-cyan-400 animate-slidedown`}
                         onClick={() => { handleClick && handleClick() }}>
                         {item.name}
                     </NavLink>
@@ -35,7 +34,7 @@ const NavLinks = ({ handleClick }) => {
                         <NavLink
                             to={item.url}
                             className="flex flex-row justify-between items-center my-8 
-                                        text-sm font-medium text-gray-400 hover:text-cyan-400"
+                                        text-sm font-medium text-gray-400 hover:text-cyan-400 z-40"
                             onClick={() => {
                                 menuOpen !== item.name ? setMenuOpen(item.name) : setMenuOpen("");
                                 !item.submenu && handleClick()
@@ -47,10 +46,9 @@ const NavLinks = ({ handleClick }) => {
                             </div>
 
                             {item.submenu && 
-                            (menuOpen == item.name ?
-                                (<RiArrowUpSLine className="w-6 h-6 text-white mr-2" />)
-                                :
-                                (<RiArrowDownSLine className="w-6 h-6 text-white mr-2" />))
+                            (<RiArrowDownSLine 
+                                className={`w-6 h-6 text-white mr-2 smooth-transition 
+                                ${menuOpen === item.name ? "rotate-180" : "rotate-0"}`} />)
                             }
                         </NavLink>
                         {item.submenu &&
@@ -81,8 +79,9 @@ const Sidebar = () => {
             </div>
 
             <div className={`absolute h-screen w-3/4 bg-gradient-to-tl from-white/5 
-            to-dark backdrop-blur-lg z-10 md:hidden mooth-transition 
-            ${isNavOpen ? 'left-0' : 'right-full'}`}>
+            to-dark backdrop-blur-lg z-10 md:hidden smooth-transition
+            ${isNavOpen ? 'left-0' : 'left-[-75%]'}`}
+            >
                 <div className='text-center text-white'>
                     <h1 className='text-base pt-6 font-bold'>YourAnimeList</h1>
                     <NavLinks handleClick={() => setIsNavOpen(false)} />

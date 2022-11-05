@@ -4,9 +4,23 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    @apply duration-300 scroll-smooth
+}
+
+@layer base {
+    html{
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+}
+
 body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Inter';
+}
+
+.smooth-transition {
+    transition: all .5s ease-in-out;
 }

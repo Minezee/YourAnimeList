@@ -17,7 +17,34 @@ module.exports = {
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
       'dark': '#1D1C1C',
-      'grey': '#342F2F'
+      'grey': '#342F2F',
+      'slate': 'rgb(226 232 240/var(--tw-bg-opacity))',
+      'dummy': '#474E68',
+    },
+    animation: {
+      slidedown: 'slidedown .3s ease-in-out',
+      slideup: 'slideup 1s ease-in-out',
+      slowfade: 'slowfade 1s ease-in-out',
+      pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+    },
+    keyframes: {
+      slowfade: {
+        from: { opacity: 0},
+        to: { opacity: 1},
+      },
+      slidedown: {
+        from: { opacity: 0, transform: 'translateY(-100%)' },
+        to: { opacity: 1, transform: 'translateY(0)' },
+      },
+      slideup: {
+        from: { opacity: 0, transform: 'translateY(0)' },
+        to: { opacity: 1, transform: 'translateY(-50%)' },
+      },
+      pulse: {
+        '0%' : {opacity: 1},
+        '50%' : {opacity: 0.5},
+        '100%' : {opacity: 1},
+      },
     },
   },
   plugins: [],
