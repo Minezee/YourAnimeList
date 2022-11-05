@@ -1,7 +1,7 @@
 import Error from "./Error";
 
 import { NavLink } from "react-router-dom";
-import { useGetTopAnimeQuery } from "../redux/services/jikanMoeApi"
+import { useGetSeasonNowQuery } from "../redux/services/jikanMoeApi"
 import { useState } from "react";
 import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri"
 import { useEffect } from "react";
@@ -26,18 +26,18 @@ const ContainerLoad = () => (
 
 const Container = ({ data, currentSlide }) => (
     <>
-        {data?.map((res) => {
+        {data?.map((anime) => {
             return (
-                <div key={res.mal_id}
+                <div key={anime.mal_id}
                     className={`min-w-[270px] h-[150px] bg-grey rounded-lg flex flex-row text-white mx-3`}
                     style={{ transform: `translateX(${-294 * (currentSlide - 1)}px)` }}>
                     <img
-                        src={res.images.jpg.large_image_url}
-                        alt={res.title}
+                        src={anime.images.jpg.large_image_url}
+                        alt={anime.title}
                         className="h-full rounded-l-lg" />
                     <div className="flex flex-col m-2">
-                        <h2 className="text-[10px] text-center font-bold">{res.title}</h2>
-                        <p className="text-[8px] text-justify w-[150px] h-20 mt-2">{res.synopsis.slice(0, 200) + "..."}</p>
+                        <h2 className="text-[10px] text-center font-bold">{anime.title}</h2>
+                        <p className="text-[8px] text-justify w-[150px] h-20 mt-2">{anime.synopsis.slice(0, 200) + "..."}</p>
                         <NavLink
                             className="button bottom-2 absolute self-end"
                         >view more</NavLink>
@@ -50,7 +50,7 @@ const Container = ({ data, currentSlide }) => (
 
 const BigSlider = () => {
     const [currentSlide, setCurrentSlide] = useState(1);
-    const { data: response, isFetching, error } = useGetTopAnimeQuery();
+    const { data: topAnimeData, isFetching, error } = useGetSeasonNowQuery();
 
     if (error) return <Error />
 
@@ -61,7 +61,7 @@ const BigSlider = () => {
     let slideInterval;
 
 
-    const topAnime = response?.data?.slice(0, maxSlide);
+    const topAnime = topAnimeData?.data?.slice(0, maxSlide);
 
     useEffect(() => {
         if (auto) {
@@ -93,7 +93,7 @@ const BigSlider = () => {
             <div className="flex flex-row justify-center items-center">
                 <RiArrowLeftSLine
                     className="text-white h-6 w-6"
-                    onClick={() => prevSlide()} />
+                    onClick={() =>  prevSlide()} />
                 <div className="flex flex-row overflow-hidden w-[294px]">
                     {isFetching ?
                         <ContainerLoad />

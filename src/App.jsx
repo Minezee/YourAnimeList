@@ -1,4 +1,4 @@
-import { Home } from './pages';
+import { FirstPage } from './pages';
 import { PageNotFound,Sidebar, Searchbar } from './components'
 
 import { Routes, Route } from 'react-router-dom';
@@ -14,7 +14,7 @@ const App = () => {
 
       <div className='mt-24 mx-3'>
         <Routes>
-          <Route path="/YourAnimeList" element={<Home />} />
+          <Route path="/YourAnimeList" element={<FirstPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>

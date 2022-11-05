@@ -7,9 +7,11 @@ export const jikanMoeApi = createApi({
     }),
     endpoints: (builder) => ({
         getTopAnime: builder.query({query: () => '/top/anime'}),
+        getSeasonNow: builder.query({query: () => '/seasons/now'}),
     }),
 });
 
 export const { 
     useGetTopAnimeQuery,
+    useGetSeasonNowQuery,
 } = jikanMoeApi

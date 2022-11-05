@@ -18,8 +18,8 @@ module.exports = {
       'bermuda': '#78dcca',
       'dark': '#1D1C1C',
       'grey': '#342F2F',
-      'slate': 'rgb(226 232 240/var(--tw-bg-opacity))',
       'dummy': '#474E68',
+      'link': '#BFBAFF',
     },
     animation: {
       slidedown: 'slidedown .3s ease-in-out',
