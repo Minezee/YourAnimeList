@@ -6,6 +6,7 @@ import { useState } from "react";
 import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri"
 import { useEffect } from "react";
 
+/*Loading Card*/
 const ContainerLoad = () => (
     <div className="min-w-[270px] h-[150px] bg-grey rounded-lg mx-3">
         <div className="animate-pulse h-full flex flex-row">
@@ -24,6 +25,7 @@ const ContainerLoad = () => (
     </div>
 )
 
+/*Card for big slider*/
 const Container = ({ data, currentSlide }) => (
     <>
         {data?.map((anime) => {
@@ -48,6 +50,7 @@ const Container = ({ data, currentSlide }) => (
     </>
 )
 
+/*Big Slider*/
 const BigSlider = () => {
     const [currentSlide, setCurrentSlide] = useState(1);
     const { data: topAnimeData, isFetching, error } = useGetSeasonNowQuery();
@@ -63,6 +66,7 @@ const BigSlider = () => {
 
     const topAnime = topAnimeData?.data?.slice(0, maxSlide);
 
+    /*used for auto slide*/
     useEffect(() => {
         if (auto) {
             slideInterval = setInterval(() => {
@@ -72,6 +76,7 @@ const BigSlider = () => {
         return () => clearInterval(slideInterval);
     }, [currentSlide])
 
+    /*Slider next and prev function*/
     function nextSlide() {
         if (currentSlide === maxSlide) {
             setCurrentSlide(1)

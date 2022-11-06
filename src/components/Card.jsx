@@ -1,6 +1,9 @@
+import { NavLink } from "react-router-dom"
+
 const Card = ({data, currentSlide}) => (
-    <div className="relative min-w-[77px] h-full mx-[6px]"
-    style={{ transform: `translateX(${-356 * (currentSlide - 1)}px)` }}>
+    <NavLink className="relative min-w-[77px] h-full mx-[6px]"
+    style={{ transform: `translateX(${-356 * (currentSlide - 1)}px)` }}
+    to={`detail/${data.mal_id}`}>
         <img
             src={data.images.jpg.large_image_url}
             className="h-full w-full"
@@ -16,7 +19,7 @@ const Card = ({data, currentSlide}) => (
                 <p className="text-[6px] text-white w-full ">{data.score}</p>
             </div>
         </div>
-    </div>
+    </NavLink>
 )
 
 export default Card

@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 import { menuItems } from '../assets/MenuItems';
 
+/*Dropdown*/
 const DropDown = ({ submenu, handleClick, menuOpen, menu }) => {
     return (
         <div className={` ${menuOpen === menu ? "block" : "hidden"}`}>
@@ -25,6 +26,7 @@ const DropDown = ({ submenu, handleClick, menuOpen, menu }) => {
     )
 }
 
+/*Navbar Menu*/
 const NavLinks = ({ handleClick }) => {
     const [menuOpen, setMenuOpen] = useState("");
     return (
@@ -65,6 +67,7 @@ const NavLinks = ({ handleClick }) => {
     )
 }
 
+/*Sidebar*/
 const Sidebar = () => {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const sidebarRef = useRef();
@@ -80,7 +83,7 @@ const Sidebar = () => {
 
     return (
         <aside>
-            <div className="absolute md:hidden block top-6 left-3 z-30 bg-transparent">
+            <div className="absolute md:hidden block top-6 left-3 z-40 bg-transparent">
                 {isNavOpen ? (
                     <RiCloseLine className="w-6 h-6 text-white mr-2"
                         onClick={() => setIsNavOpen(false)} />
@@ -92,7 +95,7 @@ const Sidebar = () => {
 
             <div className={`absolute w-screen h-screen ${isNavOpen ? 'left-0' : 'left-[-100%]'}`}>
                 <div className={`absolute h-screen w-3/4 bg-gradient-to-tl from-white/5
-                to-dark backdrop-blur-lg z-10 md:hidden smooth-transition`}
+                to-dark backdrop-blur-lg z-30 md:hidden smooth-transition`}
                 ref={sidebarRef}
                 >
                     <div className='text-center text-white'>

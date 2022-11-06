@@ -36,7 +36,7 @@ const Slider = ({data, isFetching}) => {
             {isFetching ?
                 <CardLoad data={4} />
                 :
-                data.map((anime) => (
+                data?.map((anime) => (
                     <Card
                         key={anime.mal_id}
                         data={anime} 
