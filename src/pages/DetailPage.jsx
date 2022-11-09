@@ -15,10 +15,8 @@ const DetailPage = () => {
         <div className="flex flex-col">
             <iframe
                 allowFullScreen="1"
-                height="150"
-                width="270"
                 src={`https://www.youtube.com/embed/${detailData?.trailer?.youtube_id}`}
-                className="self-center rounded-md">
+                className="self-center rounded-md w-full h-[220px]">
             </iframe>
         </div>
     )

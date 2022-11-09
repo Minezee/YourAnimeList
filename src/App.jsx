@@ -1,5 +1,5 @@
 import { DetailPage, FirstPage } from './pages';
-import { PageNotFound,Sidebar, Searchbar } from './components'
+import { PageNotFound, Sidebar, Searchbar, Navbar } from './components'
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -9,6 +9,9 @@ const App = () => {
     <div className="flex flex-col">
       <div>
         <Sidebar />
+        <div className="hidden md:block h-16">
+          <Navbar />
+        </div>
         <Searchbar />
       </div>
 

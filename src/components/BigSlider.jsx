@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useGetSeasonNowQuery } from "../redux/services/jikanMoeApi"
 import { useState } from "react";
 import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri"
-import { useEffect } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 
 /*Loading Card*/
 const ContainerLoad = () => (
@@ -26,29 +26,39 @@ const ContainerLoad = () => (
 )
 
 /*Card for big slider*/
-const Container = ({ data, currentSlide }) => (
-    <>
-        {data?.map((anime) => {
-            return (
-                <div key={anime.mal_id}
-                    className={`min-w-[270px] h-[150px] bg-grey rounded-lg flex flex-row text-white mx-3`}
-                    style={{ transform: `translateX(${-294 * (currentSlide - 1)}px)` }}>
-                    <img
-                        src={anime.images.jpg.large_image_url}
-                        alt={anime.title}
-                        className="h-full rounded-l-lg" />
-                    <div className="flex flex-col m-2">
-                        <h2 className="text-[10px] text-center font-bold">{anime.title}</h2>
-                        <p className="text-[8px] text-justify w-[150px] h-20 mt-2">{anime.synopsis.slice(0, 200) + "..."}</p>
-                        <NavLink
-                            className="button bottom-2 absolute self-end"
-                        >view more</NavLink>
+const Container = ({ data, currentSlide }) => {
+    const sliderRef = useRef();
+    const [width, setWidth] = useState(0);
+
+    useLayoutEffect(() => {
+        setWidth(sliderRef.current.offsetWidth);
+    }, []);
+
+    return (
+        <>
+            {data?.map((anime) => {
+                return (
+                    <div key={anime.mal_id}
+                        ref={sliderRef}
+                        className={`min-w-[270px] md:min-w-[40vw] h-[150px] md:h-[40vh] bg-grey rounded-lg flex flex-row text-white mx-3`}
+                        style={{ transform: `translateX(${-(width + 24) * (currentSlide - 1)}px)` }}>
+                        <img
+                            src={anime.images.jpg.large_image_url}
+                            alt={anime.title}
+                            className="h-full rounded-lg" />
+                        <div className="flex flex-col m-2">
+                            <h2 className="text-[10px] md:text-lg text-center font-bold">{anime.title}</h2>
+                            <p className="text-[8px] md:text-[14px] text-justify w-[150px] md:w-[300px] h-20 mt-2">{anime.synopsis.slice(0, width === 270 ? 200 : 280) + "..."}</p>
+                            <NavLink
+                                className="button bottom-2 absolute self-end"
+                            >view more</NavLink>
+                        </div>
                     </div>
-                </div>
-            )
-        })}
-    </>
-)
+                )
+            })}
+        </>
+    )
+}
 
 /*Big Slider*/
 const BigSlider = () => {
@@ -59,7 +69,7 @@ const BigSlider = () => {
 
     //slider settings
     const maxSlide = 5
-    const auto = true;
+    const auto = false;
     const interval = 20000;
     let slideInterval;
 
@@ -98,8 +108,8 @@ const BigSlider = () => {
             <div className="flex flex-row justify-center items-center">
                 <RiArrowLeftSLine
                     className="text-white h-6 w-6"
-                    onClick={() =>  prevSlide()} />
-                <div className="flex flex-row overflow-hidden w-[294px]">
+                    onClick={() => prevSlide()} />
+                <div className="flex flex-row overflow-hidden w-[294px] md:w-[40vw]">
                     {isFetching ?
                         <ContainerLoad />
                         :

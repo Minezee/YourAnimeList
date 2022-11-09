@@ -5,6 +5,7 @@ import { RiCloseLine, RiArrowRightSLine } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom';
 
 import { menuItems } from '../assets/MenuItems';
+/*Nav for mobile*/ 
 
 /*Dropdown*/
 const DropDown = ({ submenu, handleClick, menuOpen, menu }) => {

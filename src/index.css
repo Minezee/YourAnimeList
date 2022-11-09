@@ -41,7 +41,7 @@ body {
 
 /*style for all button*/
 .button {
-    @apply w-[55px] py-[3px] text-[8px] bg-dark rounded-sm text-center border-white border-[1px]
+    @apply px-1 md:px-2 py-[3px] text-[8px] bg-dark rounded-sm text-center md:text-[14px] border-white border-[1px] 
 }
 
 /*transition for some animation*/
