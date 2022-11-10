@@ -9,7 +9,7 @@ const CardLoad = ({data}) => {
         <>
             {arrDummy.map((d, index) => (
                     <div 
-                    className="min-w-[77px] h-[105px] mx-[6px] bg-dummy rounded-md"
+                    className="min-w-[77px] md:min-w-[124px] h-[105px] md:h-[175px] mx-[6px] md:mx-[8px] bg-dummy"
                     key={`card-load-${index}`}></div>
                 ))
             }

@@ -24,13 +24,13 @@ const FirstPage = () => {
         season = "Winter"
     }
 
-    const seasonDataDisplay = seasonAnime?.data.slice(0, 20);
-    const topAnimeDisplay = topAnime?.data.slice(0, 20);
+    const seasonDataDisplay = seasonAnime?.data.slice(0, 24);
+    const topAnimeDisplay = topAnime?.data.slice(0, 24);
 
     return (
         <div>
             <BigSlider />
-            <div className="flex flex-row mt-8 items-center text-white text-[12px]">
+            <div className="flex flex-row mt-8 items-center text-white text-[12px] md:text-base w-full md:w-[90%] md:mx-auto">
                 <h2 className="text-white">{season} {year} Anime</h2>
                 <div className="mx-2 h-px bg-white flex-1"></div>
                 <Link className="text-link">View All</Link>
@@ -38,7 +38,7 @@ const FirstPage = () => {
             <Slider
                 isFetching={isFetchingSeasonAnime}
                 data={seasonDataDisplay} />
-            <div className="flex flex-row mt-8 items-center text-white text-[12px]">
+            <div className="flex flex-row mt-8 items-center text-white text-[12px] md:text-base w-full md:w-[90%] md:mx-auto">
                 <h2 className="text-white">Top {year} Anime</h2>
                 <div className="mx-2 h-[.5px] bg-white flex-1"></div>
                 <Link className="text-link">View All</Link>
@@ -46,6 +46,9 @@ const FirstPage = () => {
             <Slider
                 isFetching={isFetchingTopAnime}
                 data={topAnimeDisplay} />
+                {/*coming soon maybe?!?!?!*/}
+                <br />
+                <br />
         </div>
     )
 }

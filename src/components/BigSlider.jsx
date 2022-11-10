@@ -1,6 +1,6 @@
 import Error from "./Error";
 
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useGetSeasonNowQuery } from "../redux/services/jikanMoeApi"
 import { useState } from "react";
 import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri"
@@ -8,18 +8,21 @@ import { useEffect, useRef, useLayoutEffect } from "react";
 
 /*Loading Card*/
 const ContainerLoad = () => (
-    <div className="min-w-[270px] h-[150px] bg-grey rounded-lg mx-3">
+    <div className="min-w-[270px] md:min-w-[40vw] h-[150px] md:h-[40vh] bg-grey rounded-lg mx-3">
         <div className="animate-pulse h-full flex flex-row">
-            <div className="h-full w-[106px] bg-dummy animate-pulse rounded-md"></div>
-            <div className="flex flex-col m-2 w-40">
-                <div className="w-full h-3 bg-dummy rounded-md"></div>
-                <div className="w-2/3 m-2 h-3 bg-dummy self-center rounded-md"></div>
-                <div className="w-full h-2 mt-2 bg-dummy rounded-md"></div>
-                <div className="w-full h-2 mt-2 bg-dummy rounded-md"></div>
-                <div className="w-full h-2 mt-2 bg-dummy rounded-md"></div>
-                <div className="w-[80%] h-2 mt-2 bg-dummy rounded-md"></div>
+            <div className="h-full w-[106px] md:w-[170px] bg-dummy animate-pulse rounded-md"></div>
+            <div className="flex flex-col m-2 w-[40px] md:w-[61%] md:pt1">
+                <div className="w-full h-3 md:h-4 bg-dummy rounded-md"></div>
+                <div className="w-2/3 m-2 h-3 md:h-4 bg-dummy self-center rounded-md"></div>
+                <div className="w-full h-2 md:h-3 mt-2 bg-dummy rounded-md"></div>
+                <div className="w-full h-2 md:h-3 mt-2 bg-dummy rounded-md"></div>
+                <div className="w-full h-2 md:h-3 mt-2 bg-dummy rounded-md"></div>
+                <div className="w-full h-2 md:h-3 mt-2 bg-dummy rounded-md"></div>
+                <div className="w-full h-2 md:h-3 mt-2 bg-dummy rounded-md"></div>
+                <div className="w-full h-2 md:h-3 mt-2 bg-dummy rounded-md"></div>
+                <div className="w-[70%] h-2 md:h-3 mt-2 bg-dummy rounded-md"></div>
                 <div
-                    className="w-[55px] h-[15px] bg-dummy rounded-sm self-end mt-4"></div>
+                    className="w-[55px] md:w-[86px] h-[15px] md:h-[29px] bg-dummy rounded-sm self-end mt-4"></div>
             </div>
         </div>
     </div>
@@ -29,10 +32,17 @@ const ContainerLoad = () => (
 const Container = ({ data, currentSlide }) => {
     const sliderRef = useRef();
     const [width, setWidth] = useState(0);
+    let sliderMove;
 
     useLayoutEffect(() => {
         setWidth(sliderRef.current.offsetWidth);
     }, []);
+
+    if(width > 400){
+        sliderMove = width + 24;
+    }else{
+        sliderMove = width + 23
+    }
 
     return (
         <>
@@ -41,17 +51,18 @@ const Container = ({ data, currentSlide }) => {
                     <div key={anime.mal_id}
                         ref={sliderRef}
                         className={`min-w-[270px] md:min-w-[40vw] h-[150px] md:h-[40vh] bg-grey rounded-lg flex flex-row text-white mx-3`}
-                        style={{ transform: `translateX(${-(width + 24) * (currentSlide - 1)}px)` }}>
+                        style={{ transform: `translateX(${-sliderMove * (currentSlide - 1)}px)` }}>
                         <img
                             src={anime.images.jpg.large_image_url}
                             alt={anime.title}
                             className="h-full rounded-lg" />
-                        <div className="flex flex-col m-2">
+                        <div className="flex flex-col m-2 md:m-4 flex-1">
                             <h2 className="text-[10px] md:text-lg text-center font-bold">{anime.title}</h2>
-                            <p className="text-[8px] md:text-[14px] text-justify w-[150px] md:w-[300px] h-20 mt-2">{anime.synopsis.slice(0, width === 270 ? 200 : 280) + "..."}</p>
-                            <NavLink
+                            <p className="text-[8px] md:text-[14px] text-justify w-full h-20 mt-2 tracking-tighter">{anime.synopsis.slice(0, width === 270 ? 230 : 310) + "..."}</p>
+                            <Link
                                 className="button bottom-2 absolute self-end"
-                            >view more</NavLink>
+                                to={`detail/${anime.mal_id}`}
+                            >view more</Link>
                         </div>
                     </div>
                 )
@@ -109,7 +120,7 @@ const BigSlider = () => {
                 <RiArrowLeftSLine
                     className="text-white h-6 w-6"
                     onClick={() => prevSlide()} />
-                <div className="flex flex-row overflow-hidden w-[294px] md:w-[40vw]">
+                <div className="flex flex-row overflow-hidden w-[294px] md:w-[43%]">
                     {isFetching ?
                         <ContainerLoad />
                         :
@@ -118,9 +129,11 @@ const BigSlider = () => {
                             currentSlide={currentSlide} />
                     }
                 </div>
-                <RiArrowRightSLine
-                    className="text-white h-6 w-6"
-                    onClick={() => nextSlide()} />
+                <button>
+                    <RiArrowRightSLine
+                        className="text-white h-6 w-6"
+                        onClick={() => nextSlide()} />
+                </button>
             </div>
             <div className="flex mx-auto my-2 justify-center">
                 {topAnime?.map((d, index) => (

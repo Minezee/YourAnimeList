@@ -84,7 +84,7 @@ const Sidebar = () => {
 
     return (
         <aside>
-            <div className="absolute md:hidden block top-6 left-3 z-40 bg-transparent">
+            <div className="absolute top-6 left-3 z-40 bg-transparent">
                 {isNavOpen ? (
                     <RiCloseLine className="w-6 h-6 text-white mr-2"
                         onClick={() => setIsNavOpen(false)} />

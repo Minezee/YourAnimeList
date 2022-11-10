@@ -8,7 +8,9 @@ const App = () => {
   return (
     <div className="flex flex-col">
       <div>
-        <Sidebar />
+        <div className='block md:hidden'>
+          <Sidebar />
+        </div>
         <div className="hidden md:block h-16">
           <Navbar />
         </div>

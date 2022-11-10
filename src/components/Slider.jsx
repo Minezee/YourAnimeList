@@ -1,14 +1,21 @@
 import Card from "./Card"
 import CardLoad from "./CardLoad"
 
-import { useState } from "react"
-import {RiArrowRightSLine, RiArrowLeftSLine} from 'react-icons/ri'
+import { useState, useRef, useLayoutEffect } from "react"
+import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
 
-const Slider = ({data, isFetching}) => {
+const Slider = ({ data, isFetching }) => {
     const [currentSlide, setCurrentSlide] = useState(1);
+    const sliderRef = useRef();
+    const [width, setWidth] = useState(1);
+    let sliderMove;
+
+    useLayoutEffect(() => {
+        setWidth(sliderRef.current.offsetWidth);
+    }, []);
 
     function nextSlide() {
-        if (currentSlide === 5) {
+        if (currentSlide === 3) {
             setCurrentSlide(1)
         } else {
             setCurrentSlide(currentSlide + 1)
@@ -17,38 +24,64 @@ const Slider = ({data, isFetching}) => {
 
     function prevSlide() {
         if (currentSlide === 1) {
-            setCurrentSlide(5)
+            setCurrentSlide(3)
         } else {
             setCurrentSlide(currentSlide - 1)
         }
     }
 
-    return(
-    <div className="flex items-center justify-center">
-        <div className="relative flex items-center h-[105px] w-full md:w-[50vw] mt-2">
-            <RiArrowLeftSLine
-            className="text-white absolute left-[-2px] bg-gradient-to-r from-dark h-full w-5 z-10"
-            onClick={() => {
-                prevSlide();
-            }}/>
-            <div className="flex w-full h-full overflow-hidden">
-                {isFetching ?
-                    <CardLoad data={4} />
-                    :
-                    data?.map((anime) => (
-                        <Card
+    if(width > 400){
+        sliderMove = width + 18;
+    }else{
+        sliderMove = width + 16;
+    }
+
+    return (
+        <div className="flex items-center justify-center">
+            <div className="relative flex items-center h-[105px] md:h-[175px] w-full md:w-[90%] mt-2 overflow-hidden">
+                <button className="absolute left-[-2px] z-10 h-full">
+                    <RiArrowLeftSLine
+                        className="text-white bg-gradient-to-r from-dark h-full w-5 md:w-7 z-10 hover:animate-slideleft"
+                        onClick={() => {
+                            prevSlide();
+                        }} />
+                </button>
+                <div 
+                ref={sliderRef}
+                className="flex w-full h-full"
+                style={{ transform: `translateX(${-sliderMove * (currentSlide - 1)}px)` }}
+                >
+                    {isFetching ?
+                        <>
+                            <div className="flex md:hidden">
+                                <CardLoad data={4} />
+                            </div>
+                            <div className="hidden md:flex">
+                                <CardLoad data={8} />
+                            </div>
+                        </>
+                        :
+                        data?.map((anime) => (
+                            <div 
+                            className="relative min-w-[21.7%] md:min-w-[124px] h-full mx-[6px] md:mx-[8px]"
                             key={anime.mal_id}
-                            data={anime}
-                            currentSlide={currentSlide}/>
-                    ))}
+                            >
+                                <Card
+                                    data={anime} />
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <button className="absolute right-[-2px] h-full z-10">
+                    <RiArrowRightSLine
+                        className="text-white bg-gradient-to-l from-dark h-full w-5 md:w-7 hover:animate-slideright"
+                        onClick={() => {
+                            nextSlide();
+                        }} />
+                </button>
             </div>
-            <RiArrowRightSLine
-            className="text-white absolute right-[-2px] bg-gradient-to-l from-dark h-full w-5 z-10"
-            onClick={() => {
-                nextSlide();
-            }}/>
         </div>
-    </div>
     )
 }
 

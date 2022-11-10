@@ -41,10 +41,15 @@ body {
 
 /*style for all button*/
 .button {
-    @apply px-1 md:px-2 py-[3px] text-[8px] bg-dark rounded-sm text-center md:text-[14px] border-white border-[1px] 
+    @apply px-1 md:px-2 py-[3px] text-[8px] bg-dark rounded-sm text-center md:text-[14px] border-white border-[1px] hover:opacity-80
 }
 
 /*transition for some animation*/
 .smooth-transition {
     transition: all .5s ease-in-out;
+}
+
+/*idk how to create another group-hover :)*/
+.menu:hover .underline-animation {
+    width: 100%;
 }
