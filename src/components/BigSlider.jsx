@@ -32,17 +32,10 @@ const ContainerLoad = () => (
 const Container = ({ data, currentSlide }) => {
     const sliderRef = useRef();
     const [width, setWidth] = useState(0);
-    let sliderMove;
 
     useLayoutEffect(() => {
         setWidth(sliderRef.current.offsetWidth);
     }, []);
-
-    if(width > 400){
-        sliderMove = width + 24;
-    }else{
-        sliderMove = width + 23
-    }
 
     return (
         <>
@@ -51,14 +44,14 @@ const Container = ({ data, currentSlide }) => {
                     <div key={anime.mal_id}
                         ref={sliderRef}
                         className={`min-w-[270px] md:min-w-[40vw] h-[150px] md:h-[40vh] bg-grey rounded-lg flex flex-row text-white mx-3`}
-                        style={{ transform: `translateX(${-sliderMove * (currentSlide - 1)}px)` }}>
+                        style={{ transform: `translateX(${-(width + 24) * (currentSlide - 1)}px)` }}>
                         <img
                             src={anime.images.jpg.large_image_url}
                             alt={anime.title}
                             className="h-full rounded-lg" />
                         <div className="flex flex-col m-2 md:m-4 flex-1">
-                            <h2 className="text-[10px] md:text-lg text-center font-bold">{anime.title}</h2>
-                            <p className="text-[8px] md:text-[14px] text-justify w-full h-20 mt-2 tracking-tighter">{anime.synopsis.slice(0, width === 270 ? 230 : 310) + "..."}</p>
+                            <h2 className="text-[10px] md:text-lg 2xl:text-2xl text-center font-bold">{anime.title}</h2>
+                            <p className="text-[8px] md:text-[13px] 2xl:text-lg text-justify w-full h-20 mt-2 tracking-tighter">{anime.synopsis.slice(0, width === 270 ? 230 : 290) + "..."}</p>
                             <Link
                                 className="button bottom-2 absolute self-end"
                                 to={`detail/${anime.mal_id}`}
@@ -117,9 +110,11 @@ const BigSlider = () => {
     return (
         <>
             <div className="flex flex-row justify-center items-center">
-                <RiArrowLeftSLine
-                    className="text-white h-6 w-6"
-                    onClick={() => prevSlide()} />
+                <button>
+                    <RiArrowLeftSLine
+                        className="text-white h-6 w-6"
+                        onClick={() => prevSlide()} />
+                </button>
                 <div className="flex flex-row overflow-hidden w-[294px] md:w-[43%]">
                     {isFetching ?
                         <ContainerLoad />
