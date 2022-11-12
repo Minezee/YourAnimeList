@@ -8,7 +8,8 @@ export const jikanMoeApi = createApi({
     endpoints: (builder) => ({
         getTopAnime: builder.query({query: () => '/top/anime'}),
         getSeasonNow: builder.query({query: () => '/seasons/now'}),
-        getFullAnimeData: builder.query({query: (id) => `/anime/${id}/full`})
+        getFullAnimeData: builder.query({query: (id) => `/anime/${id}/full`}),
+        getAnimeByGenre: builder.query({query: (genre) => `/anime?genres=${genre}&order_by=score&sort=desc`}),
     }),
 });
 
@@ -16,4 +17,5 @@ export const {
     useGetTopAnimeQuery,
     useGetSeasonNowQuery,
     useGetFullAnimeDataQuery,
+    useGetAnimeByGenreQuery,
 } = jikanMoeApi

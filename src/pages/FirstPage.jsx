@@ -12,20 +12,32 @@ const FirstPage = () => {
     const year = new Date().getFullYear();
     let season;
 
-    if (month < 2) {
-        season = "Winter"
-    } else if (month < 5) {
-        season = "Spring"
-    } else if (month < 8) {
-        season = "Summer"
-    } else if (month < 11) {
-        season = "Autumn"
-    } else {
-        season = "Winter"
+    //switch case to get season
+    switch(month){
+        case 0:
+        case 1:
+        case 11:
+            season = "Winter";
+            break;
+        case 2:
+        case 3:
+        case 4:
+            season = "Spring";
+            break;
+        case 5:
+        case 6:
+        case 7:
+            season = "Summer";
+            break;
+        case 8:
+        case 9:
+        case 10:
+            season = "Autumn";
+            break;
     }
 
-    const seasonDataDisplay = seasonAnime?.data.slice(0, 24);
-    const topAnimeDisplay = topAnime?.data.slice(0, 24);
+    const seasonDataDisplay = seasonAnime?.data;
+    const topAnimeDisplay = topAnime?.data;
 
     return (
         <div>

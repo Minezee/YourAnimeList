@@ -45,8 +45,6 @@ const Slider = ({ data, isFetching }) => {
     //     sliderMove = ((slideWidth * 0.112) * 8) + 20;
     // }
 
-    console.log((slideWidth * 0.11))
-
     return (
         <div className="flex items-center justify-center">
             <div className="relative flex items-center h-[105px] md:h-[29vh] w-full md:w-[90%] mt-2 overflow-hidden">
