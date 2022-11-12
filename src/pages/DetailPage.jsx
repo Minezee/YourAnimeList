@@ -71,59 +71,61 @@ const DetailPage = () => {
             <iframe
                 allowFullScreen="1"
                 src={`https://www.youtube.com/embed/${animeData?.trailer?.youtube_id}`}
-                className="self-center rounded-md w-full h-[200px]">
+                className="self-center rounded-md w-full h-[200px] z-10">
             </iframe>
-            <h3 className="text-white font-bold text-[14px] mt-6">{animeData?.title}</h3>
-            <section className="flex flex-row text-white opacity-60 items-center text-[.5em] mt-2">
-                <TfiTime className="text-xs" />
-                <span className="ml-1">{animeData?.duration}</span>
-                <AiFillStar className="ml-3 text-xs" />
-                <span className="ml-1">{animeData?.score}</span>
-            </section>
-            <hr className="w-full text-white my-3 opacity-60" />
-            <section className="flex flex-row text-white text-[.5em] justify-between">
-                <div>
-                    <div className="font-bold">
-                        Release Date
+            <h3 className=" font-bold text-[14px] mt-6 text-white">{animeData?.title}</h3>
+            <div className="text-[10px] text-white">
+                <section className="flex flex-row opacity-60 items-center mt-2">
+                    <TfiTime className="text-xs" />
+                    <span className="ml-1">{animeData?.duration}</span>
+                    <AiFillStar className="ml-3 text-xs" />
+                    <span className="ml-1">{animeData?.score}</span>
+                </section>
+                <hr className="w-full my-3 opacity-60" />
+                <section className="flex flex-row  justify-between">
+                    <div>
+                        <div className="font-bold">
+                            Release Date
+                        </div>
+                        <span className="opacity-60">
+                            {`${releaseDate?.day} ${month} ${releaseDate?.year}`}
+                        </span>
+                        <div className="font-bold pt-3">
+                            Type
+                        </div>
+                        <span className="opacity-60">
+                            {animeData?.type === "TV" ?
+                                `episodes${animeData?.episodes === null ? '' : ': ' + animeData?.episodes}` : "Movies"}
+                        </span>
                     </div>
-                    <span className="opacity-60">
-                        {`${releaseDate?.day} ${month} ${releaseDate?.year}`}
-                    </span>
-                    <div className="font-bold pt-3">
-                        Type
+                    <div className="font-bold text-center w-[40%]">
+                        Genres
+                        <div className="flex flex-wrap justify-center">
+                            {animeData?.genres?.map((genre) => (
+                                <div
+                                    key={genre.mal_id}
+                                    className="bg-grey py-1 px-2 m-1 opacity-60 rounded-lg font-normal">
+                                    {genre.name}
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                    <span className="opacity-60">
-                        {animeData?.type === "TV" ?
-                            `episodes${animeData?.episodes === null ? '' : ': ' + animeData?.episodes}` : "Movies"}
-                    </span>
-                </div>
-                <div className="font-bold text-center w-[40%] text-[.5em]">
-                    Genres
-                    <div className="flex flex-wrap justify-center">
-                        {animeData?.genres?.map((genre) => (
-                            <div
-                                key={genre.mal_id}
-                                className="bg-grey py-1 px-2 m-1 opacity-60 rounded-lg font-normal">
-                                {genre.name}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-            <hr className="w-full text-white my-3 opacity-60" />
-            <section className="font-bold text-[.5em] text-white">
-                Synopsis :
-                <p className="font-normal opacity-60 mt-2 text-justify">
-                    {animeData?.synopsis?.slice(0, cutText)}
-                </p>
-            </section>
-            <hr className="w-full text-white my-3 opacity-60" />
-            <section className="text-white font-bold text-[8px]">
-                Related Anime
-                <Slider
-                isFetching={isFetchingAnimeByGenre}
-                data={data?.data} />
-            </section>
+                </section>
+                <hr className="w-full my-3 opacity-60" />
+                <section className="font-bold">
+                    Synopsis :
+                    <p className="font-normal opacity-60 mt-2 text-justify">
+                        {animeData?.synopsis?.slice(0, cutText)}
+                    </p>
+                </section>
+                <hr className="w-full my-3 opacity-60" />
+                <section className="font-bold">
+                    Related Anime
+                    <Slider
+                    isFetching={isFetchingAnimeByGenre}
+                    data={data?.data} />
+                </section>
+            </div>
             <br />
         </div>
     )
