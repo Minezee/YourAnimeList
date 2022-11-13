@@ -63,10 +63,10 @@ const Slider = ({ data, isFetching }) => {
                     {isFetching ?
                         <>
                             <div className="flex md:hidden w-full">
-                                <CardLoad data={4} />
+                                <CardLoad />
                             </div>
                             <div className="hidden md:flex w-full">
-                                <CardLoad data={8} />
+                                <CardLoad />
                             </div>
                         </>
                         :

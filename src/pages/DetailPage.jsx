@@ -71,14 +71,14 @@ const DetailPage = () => {
             <iframe
                 allowFullScreen="1"
                 src={`https://www.youtube.com/embed/${animeData?.trailer?.youtube_id}`}
-                className="self-center rounded-md w-full h-[200px] z-10">
+                className="self-center rounded-md w-full md:w-[50%] h-[200px] md:h-[58vh] z-10">
             </iframe>
-            <h3 className=" font-bold text-[14px] mt-6 text-white">{animeData?.title}</h3>
-            <div className="text-[10px] text-white">
+            <h3 className=" font-bold text-sm md:text-lg 2xl:text-2xl mt-6 text-white">{animeData?.title}</h3>
+            <div className="text-[10px] md:text-sm 2xl:text-lg text-white">
                 <section className="flex flex-row opacity-60 items-center mt-2">
-                    <TfiTime className="text-xs" />
+                    <TfiTime className="text-xs md:text-sm 2xl:text-lg" />
                     <span className="ml-1">{animeData?.duration}</span>
-                    <AiFillStar className="ml-3 text-xs" />
+                    <AiFillStar className="ml-3 text-xs md:text-sm 2xl:text-lg" />
                     <span className="ml-1">{animeData?.score}</span>
                 </section>
                 <hr className="w-full my-3 opacity-60" />

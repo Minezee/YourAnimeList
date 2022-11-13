@@ -11,7 +11,7 @@ const ContainerLoad = () => (
     <div className="min-w-[270px] md:min-w-[40vw] h-[150px] md:h-[40vh] bg-grey rounded-lg mx-3">
         <div className="animate-pulse h-full flex flex-row">
             <div className="h-full w-[106px] md:w-[170px] bg-dummy animate-pulse rounded-md"></div>
-            <div className="flex flex-col m-2 w-[40px] md:w-[61%] md:pt1">
+            <div className="flex flex-col m-2 flex-1 md:pt1">
                 <div className="w-full h-3 md:h-4 bg-dummy rounded-md"></div>
                 <div className="w-2/3 m-2 h-3 md:h-4 bg-dummy self-center rounded-md"></div>
                 <div className="w-full h-2 md:h-3 mt-2 bg-dummy rounded-md"></div>

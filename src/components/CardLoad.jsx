@@ -1,7 +1,7 @@
-const CardLoad = ({data}) => {
+const CardLoad = () => {
     let arrDummy = []
 
-    for (let i = 0; i < data; i++) {
+    for (let i = 0; i < 25; i++) {
         arrDummy.push(' ')
     }
 
