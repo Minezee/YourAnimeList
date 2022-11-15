@@ -43,7 +43,7 @@ const Container = ({ data, currentSlide }) => {
                 return (
                     <div key={anime.mal_id}
                         ref={sliderRef}
-                        className={`min-w-[270px] md:min-w-[40vw] h-[150px] md:h-[40vh] bg-grey rounded-lg flex flex-row text-white mx-3`}
+                        className={`min-w-[270px] md:min-w-[41vw] h-[150px] md:h-[40vh] bg-grey rounded-lg flex flex-row text-white mx-3`}
                         style={{ transform: `translateX(${-(width + 24) * (currentSlide - 1)}px)` }}>
                         <img
                             src={anime.images.jpg.large_image_url}

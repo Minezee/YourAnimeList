@@ -8,6 +8,9 @@ import Error from './Error';
 import Card from './Card';
 import CardLoad from './CardLoad';
 import Slider from './Slider';
+import SlideLoad from './SlideLoad';
+import PageLoad from './PageLoad';
+import Page from './Page';
 
 export {
 PageNotFound,
@@ -20,4 +23,7 @@ Loading,
 Card,
 CardLoad,
 Slider,
+SlideLoad,
+PageLoad,
+Page,
 };

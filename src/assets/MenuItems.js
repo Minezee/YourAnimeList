@@ -14,15 +14,15 @@ export const menuItems = [
         index: 1,
         submenu: [
             {
-                name: 'All Anime',
-                url: '/YourAnimeList/',
-            },
-            {
                 name: 'Top Anime',
-                url: '/YourAnimeList/',
+                url: '/YourAnimeList/anime/top',
             },
             {
                 name: 'Seasonal Anime',
+                url: '/YourAnimeList/anime/seasonal',
+            },
+            {
+                name: 'Upcoming Anime',
                 url: '/YourAnimeList/',
             },
             {
@@ -36,10 +36,6 @@ export const menuItems = [
         icons: FaBookOpen,
         index: 2,
         submenu: [
-            {
-                name: 'All Manga',
-                url: '/YourAnimeList/',
-            },
             {
                 name: 'Top Manga',
                 url: '/YourAnimeList/',

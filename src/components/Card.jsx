@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 
 const Card = ({ data }) => (
-    <Link 
-    to={`/YourAnimeList/detail/${data.mal_id}`}
-    className="hover:opacity-80"
+    <Link
+        to={`/YourAnimeList/detail/${data.mal_id}`}
+        className="hover:opacity-80 relative "
     >
         <img
             src={data.images.jpg.large_image_url}

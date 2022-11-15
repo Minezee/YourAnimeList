@@ -1,17 +1,18 @@
 import Card from "./Card"
-import CardLoad from "./CardLoad"
+import SlideLoad from "./SlideLoad"
+import Error from "./Error"
 
 import { useState, useRef, useLayoutEffect } from "react"
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
 
-const Slider = ({ data, isFetching }) => {
+const Slider = ({ data, isFetching, error }) => {
     const [currentSlide, setCurrentSlide] = useState(1);
     const cardRef = useRef();
     const [cardWidth, setCardWidth] = useState(1);
     const sliderRef = useRef();
     const [slideWidth, setSlideWidth] = useState(1);
     let sliderMove;
-    
+
     useLayoutEffect(() => {
         setSlideWidth(sliderRef.current.offsetWidth);
     }, []);
@@ -37,13 +38,8 @@ const Slider = ({ data, isFetching }) => {
     } else {
         sliderMove = (((slideWidth * 0.112) * 8) + 130);
     }
-    // } else if (slideWidth < 1200) {
-    //     sliderMove = slideWidth + 10;
-    // } else if (slideWidth < 1300) {
-    //     sliderMove = slideWidth;
-    // } else {
-    //     sliderMove = ((slideWidth * 0.112) * 8) + 20;
-    // }
+
+    if(error) return <Error />
 
     return (
         <div className="flex items-center justify-center">
@@ -61,19 +57,12 @@ const Slider = ({ data, isFetching }) => {
                     style={{ transform: `translateX(${-(((slideWidth * 0.112) * 8) + 130) * (currentSlide - 1)}px)` }}
                 >
                     {isFetching ?
-                        <>
-                            <div className="flex md:hidden w-full">
-                                <CardLoad />
-                            </div>
-                            <div className="hidden md:flex w-full">
-                                <CardLoad />
-                            </div>
-                        </>
+                        <SlideLoad />
                         :
                         data?.map((anime) => (
                             <div
                                 ref={cardRef}
-                                className="relative min-w-[21.7%] md:min-w-[11.2%] h-full mx-[6px] md:mx-[8px]"
+                                className="min-w-[21.7%] md:min-w-[11.2%] h-full mx-[6px] md:mx-[8px]"
                                 key={anime.mal_id}
                             >
                                 <Card

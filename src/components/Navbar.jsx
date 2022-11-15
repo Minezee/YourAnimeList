@@ -18,15 +18,17 @@ const Dropdown = ({ submenu }) => (
 const Navbar = () => {
     return (
         <div className="flex w-full bg-grey justify-between fixed z-30 px-5">
-            <h1 className="text-white font-bold text-xl 2xl:text-2xl py-5 2xl:py-7">YourAnimeList</h1>
+            <NavLink to={"/YourAnimeList/"}>
+                <h1 className="text-white font-bold text-xl 2xl:text-2xl py-5 2xl:py-7">YourAnimeList</h1>
+            </NavLink>
             <div className='flex text-white items-center'>
                 {menuItems.map((item) => (
                     <div
-                        className={`relative group/nav ${item.submenu && 'cursor-default'} h-full py-5 2xl:py-7 hover:bg-[#453F3F]`}
+                        className={`relative group/nav hover:bg-[#453F3F]`}
                         key={item.name}
                     >
                         <NavLink to={item.url}>
-                            <h3 className='mx-4 text-lg 2xl:text-lg'>{item.name}</h3>
+                            <h3 className={`px-4 text-lg 2xl:text-lg ${item.submenu && 'cursor-default'} h-full py-5 2xl:py-7`}>{item.name}</h3>
                         </NavLink>
                         {item.submenu && <Dropdown
                             submenu={item.submenu} />}
