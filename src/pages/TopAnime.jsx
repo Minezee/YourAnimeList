@@ -14,15 +14,19 @@ const TopAnime = () => {
         setSearchParams({ page: page })
     }, [page])
 
+    if (error) return <Error />
+
     return(
-        <Page 
-        data = {data}
-        isFetching = {isFetching}
-        error = {error}
-        pageNum = {pageNum}
-        setPage = { (num) => setPage(num)}
-        page = {page}
-        />
+        <>
+            <h2 className="text-white text-center text-sm md:text-xl font-bold">Top Anime</h2>
+            <Page
+            data = {data}
+            isFetching = {isFetching}
+            pageNum = {pageNum}
+            setPage = { (num) => setPage(num)}
+            page = {page}
+            />
+        </>
     )
 }
 

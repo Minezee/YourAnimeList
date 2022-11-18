@@ -1,14 +1,14 @@
-import { useGetSeasonAnimePageQuery } from "../redux/services/jikanMoeApi";
+import { useGetUpcomingAnimePageQuery } from "../redux/services/jikanMoeApi";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import {Page} from "../components";
 
-const SeasonalAnime = () => {
+const UpcomingAnime = () => {
     const [searchParams, setSearchParams] = useSearchParams({page: 1});
     const pageNum = searchParams.get('page')
     const [page, setPage] = useState(parseInt(pageNum));
-    const { data, isFetching, error } = useGetSeasonAnimePageQuery(page);
+    const { data, isFetching, error } = useGetUpcomingAnimePageQuery(page);
     
     useEffect(() => {
         setSearchParams({ page: page })
@@ -18,7 +18,7 @@ const SeasonalAnime = () => {
 
     return(
         <>
-            <h2 className="text-white text-center text-sm md:text-xl font-bold">Seasonal Anime</h2>
+            <h2 className="text-white text-center text-sm md:text-xl font-bold">Upcoming Anime</h2>
             <Page
             data = {data}
             isFetching = {isFetching}
@@ -30,4 +30,4 @@ const SeasonalAnime = () => {
     )
 }
 
-export default SeasonalAnime
+export default UpcomingAnime

@@ -23,11 +23,11 @@ export const menuItems = [
             },
             {
                 name: 'Upcoming Anime',
-                url: '/YourAnimeList/',
+                url: '/YourAnimeList/anime/upcoming',
             },
             {
                 name: 'Anime Search',
-                url: '/YourAnimeList/',
+                url: '/YourAnimeList/anime/seasonal',
             },
         ]
     },

@@ -10,7 +10,6 @@ const DetailPage = () => {
     const { data: fullData, isFetching, error } = useGetFullAnimeDataQuery(id);
     const animeData = fullData?.data;
     const releaseDate = animeData?.aired?.prop?.from;
-    const cutText = animeData?.synopsis.search("Written") - 1;
     const genreArr = [];
     
     animeData?.genres?.map((genre) => {
@@ -75,12 +74,14 @@ const DetailPage = () => {
             </iframe>
             <h3 className=" font-bold text-sm md:text-lg 2xl:text-2xl mt-6 text-white">{animeData?.title}</h3>
             <div className="text-[10px] md:text-sm 2xl:text-lg text-white">
-                <section className="flex flex-row opacity-60 items-center mt-2">
+                {animeData?.score &&
+                    <section className="flex flex-row opacity-60 items-center mt-2">
                     <TfiTime className="text-xs md:text-sm 2xl:text-lg" />
                     <span className="ml-1">{animeData?.duration}</span>
                     <AiFillStar className="ml-3 text-xs md:text-sm 2xl:text-lg" />
                     <span className="ml-1">{animeData?.score}</span>
                 </section>
+                }
                 <hr className="w-full my-3 opacity-60" />
                 <section className="flex flex-row  justify-between">
                     <div>
@@ -88,7 +89,9 @@ const DetailPage = () => {
                             Release Date
                         </div>
                         <span className="opacity-60">
-                            {`${releaseDate?.day} ${month} ${releaseDate?.year}`}
+                            {releaseDate?.year === null ? 
+                            'Still no information'
+                            : `${releaseDate?.day} ${month} ${releaseDate?.year}`}
                         </span>
                         <div className="font-bold pt-3">
                             Type
@@ -115,7 +118,7 @@ const DetailPage = () => {
                 <section className="font-bold">
                     Synopsis :
                     <p className="font-normal opacity-60 mt-2 text-justify">
-                        {animeData?.synopsis?.slice(0, cutText)}
+                        {animeData?.synopsis ? animeData?.synopsis : animeData?.synopsis?.slice(0, animeData?.synopsis.search("Written") - 1)}
                     </p>
                 </section>
                 <hr className="w-full my-3 opacity-60" />
