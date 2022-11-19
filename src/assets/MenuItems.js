@@ -5,7 +5,7 @@ import { FaBookOpen } from "react-icons/fa"
 export const menuItems = [
     {
         name: 'Home',
-        url: '/YourAnimeList/',
+        url: '/',
         icons: AiFillHome,
     },
     {
@@ -15,19 +15,19 @@ export const menuItems = [
         submenu: [
             {
                 name: 'Top Anime',
-                url: '/YourAnimeList/anime/top',
+                url: '/anime/top',
             },
             {
                 name: 'Seasonal Anime',
-                url: '/YourAnimeList/anime/seasonal',
+                url: '/anime/seasonal',
             },
             {
                 name: 'Upcoming Anime',
-                url: '/YourAnimeList/anime/upcoming',
+                url: '/anime/upcoming',
             },
             {
                 name: 'Anime Search',
-                url: '/YourAnimeList/anime/seasonal',
+                url: '/anime/seasonal',
             },
         ]
     },
@@ -38,15 +38,15 @@ export const menuItems = [
         submenu: [
             {
                 name: 'Top Manga',
-                url: '/YourAnimeList/',
+                url: '/',
             },
             {
                 name: 'Seasonal Manga',
-                url: '/YourAnimeList/',
+                url: '/',
             },
             {
                 name: 'Manga Search',
-                url: '/YourAnimeList/',
+                url: '/',
             },
         ]
     },

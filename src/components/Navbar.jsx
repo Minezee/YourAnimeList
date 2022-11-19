@@ -18,7 +18,7 @@ const Dropdown = ({ submenu }) => (
 const Navbar = () => {
     return (
         <div className="flex w-full bg-grey justify-between fixed z-30 px-5">
-            <NavLink to={"/YourAnimeList/"}>
+            <NavLink to={"/"}>
                 <h1 className="text-white font-bold text-xl 2xl:text-2xl py-5 2xl:py-7">YourAnimeList</h1>
             </NavLink>
             <div className='flex text-white items-center'>

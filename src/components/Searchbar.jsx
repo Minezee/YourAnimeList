@@ -18,7 +18,7 @@ const Searchbar = () => {
             bg-transparent flex-1 w-1 h-full pl-2 "
             />
             <Link
-            to={`/YourAnimeList/anime/search?q=${inputValue}`}>
+            to={`/anime/search?q=${inputValue}`}>
                 <button
                 className='md:mr-3 w-6 md:w-[7%] md:text-xl h-full align-sub'
                 >

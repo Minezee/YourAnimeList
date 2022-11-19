@@ -46,7 +46,7 @@ const FirstPage = () => {
                 <h2 className="text-white">{season} {year} Anime</h2>
                 <div className="mx-2 h-px bg-white flex-1"></div>
                 <Link
-                to='/YourAnimeList/anime/seasonal'
+                to='/anime/seasonal'
                 className="text-link">View All</Link>
             </div>
             <Slider
@@ -57,7 +57,7 @@ const FirstPage = () => {
                 <h2 className="text-white">Top {year} Anime</h2>
                 <div className="mx-2 h-[.5px] bg-white flex-1"></div>
                 <Link 
-                to='/YourAnimeList/anime/top'
+                to='/anime/top'
                 className="text-link">View All</Link>
             </div>
             <Slider
