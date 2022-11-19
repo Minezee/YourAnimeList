@@ -8,8 +8,9 @@ const AnimeSearch = () => {
     const [searchParams, setSearchParams] = useSearchParams({q: ''});
     const pageNum = 0;
     const [page, setPage] = useState(0);
-    const [query, setQuery] = useState(searchParams.get('q'))
+    const query = searchParams.get('q');
     const { data, isFetching, error } = useGetAnimeSearchQuery(query);
+    
     useEffect(() => {
         setSearchParams({ q: query })
     }, [query])
