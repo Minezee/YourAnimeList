@@ -20,9 +20,9 @@ const App = () => {
       <div className='mt-16 mx-3'>
         <Routes>
           <Route path="/YourAnimeList" element={<FirstPage />} />
+          <Route path="/YourAnimeList/anime/search" element={<AnimeSearch />} />
           <Route path="/YourAnimeList/detail/:id" element={<DetailPage />} />
           <Route path="/YourAnimeList/anime/top" element={<TopAnime />} />
-          <Route path="/YourAnimeList/anime/search" element={<AnimeSearch />} />
           <Route path="/YourAnimeList/anime/seasonal" element={<SeasonalAnime />} />
           <Route path="/YourAnimeList/anime/upcoming" element={<UpcomingAnime />} />
           <Route path="*" element={<PageNotFound />} />
