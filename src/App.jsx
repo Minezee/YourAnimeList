@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/YourAnimeList/anime/top" element={<TopAnime />} />
           <Route path="/YourAnimeList/anime/seasonal" element={<SeasonalAnime />} />
           <Route path="/YourAnimeList/anime/upcoming" element={<UpcomingAnime />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </div>
     </div>
