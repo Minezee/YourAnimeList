@@ -94,7 +94,7 @@ const Sidebar = () => {
                 )}
             </div>
 
-            <div className={`absolute w-screen h-screen ${isNavOpen ? 'left-0' : 'left-[-100%]'}`}>
+            <div className={`absolute w-screen h-screen ${isNavOpen ? 'left-0' : 'left-[-100%]'} notranslate`}>
                 <div className={`absolute h-screen w-3/4 bg-gradient-to-tl from-white/5
                 to-dark backdrop-blur-lg z-30 md:hidden smooth-transition`}
                 ref={sidebarRef}

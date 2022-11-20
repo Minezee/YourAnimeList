@@ -72,7 +72,7 @@ const DetailPage = () => {
                 src={`https://www.youtube.com/embed/${animeData?.trailer?.youtube_id}`}
                 className="self-center rounded-md w-full md:w-[50%] h-[200px] md:h-[58vh] z-10">
             </iframe>
-            <h3 className=" font-bold text-sm md:text-lg 2xl:text-2xl mt-6 text-white">{animeData?.title}</h3>
+            <h3 className=" font-bold text-sm md:text-lg 2xl:text-2xl mt-6 text-white notranslate">{animeData?.title}</h3>
             <div className="text-[10px] md:text-sm 2xl:text-lg text-white">
                 {animeData?.score &&
                     <section className="flex flex-row opacity-60 items-center mt-2">
@@ -118,7 +118,7 @@ const DetailPage = () => {
                 <section className="font-bold">
                     Synopsis :
                     <p className="font-normal opacity-60 mt-2 text-justify">
-                        {animeData?.synopsis ? animeData?.synopsis : animeData?.synopsis?.slice(0, animeData?.synopsis.search("Written") - 1)}
+                        {animeData?.synopsis?.slice(0, animeData?.synopsis.search("Written") - 1)}
                     </p>
                 </section>
                 <hr className="w-full my-3 opacity-60" />
