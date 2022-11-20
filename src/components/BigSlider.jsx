@@ -73,7 +73,7 @@ const BigSlider = () => {
 
     //slider settings
     const maxSlide = 5
-    const auto = false;
+    const auto = true;
     const interval = 20000;
     let slideInterval;
 
