@@ -21,7 +21,7 @@ const AnimeSearch = () => {
                 </div>
                 :
                 <>
-                    <h2 className="text-white text-center text-sm md:text-xl font-bold">Search : {query}</h2>
+                    <h2 className="text-white text-center text-sm md:text-xl font-bold notranslate">Search : {query}</h2>
                     <Page
                     data={data}
                     isFetching={isFetching}

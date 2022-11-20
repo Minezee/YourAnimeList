@@ -21,6 +21,7 @@ const Searchbar = () => {
             to={`/anime/search?q=${inputValue}`}>
                 <button
                 className='md:mr-3 w-6 md:w-[7%] md:text-xl h-full align-sub'
+                onClick={()=> setInputValue('')}
                 >
                 <AiOutlineSearch />
                 </button>
