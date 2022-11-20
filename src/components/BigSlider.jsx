@@ -51,7 +51,7 @@ const Container = ({ data, currentSlide }) => {
                             className="h-full rounded-lg" />
                         <div className="flex flex-col m-2 md:m-4 flex-1">
                             <h2 className="text-[10px] md:text-lg 2xl:text-2xl text-center font-bold notranslate">{anime.title}</h2>
-                            <p className="text-[8px] md:text-[13px] 2xl:text-lg text-justify w-full h-20 mt-2 tracking-tighter">{anime.synopsis.slice(0, width === 270 ? 230 : 290) + "..."}</p>
+                            <p className="text-[8px] md:text-[13px] 2xl:text-lg text-justify w-full mt-2 tracking-tighter cut-text">{anime.synopsis}</p>
                             <Link
                                 className="button bottom-2 absolute self-end notranslate"
                                 to={`detail/${anime.mal_id}`}

@@ -11,11 +11,8 @@ const Card = ({ data }) => (
             alt={data.title} />
         <div className="absolute w-full h-1/2 bg-gradient-to-t from-dark bottom-0 notranslate">
             <div className="absolute bottom-0 left-0 m-1 md:m-2">
-                <h3 className="md:hidden text-[8px] text-white font-bold w-full">
-                    {data.title.length > 40 ?
-                        (data.title.slice(0, 40) + "...")
-                        :
-                        (data.title)}
+                <h3 className="md:hidden text-[8px] text-white font-bold w-full cut-title">
+                    {data.title}
                 </h3>
 
                 <h3 className="md:block hidden text-xs text-white font-bold w-full">
