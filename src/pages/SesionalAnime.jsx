@@ -2,7 +2,7 @@ import { useGetSeasonAnimePageQuery } from "../redux/services/jikanMoeApi";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import {Page} from "../components";
+import {Page, Error} from "../components";
 
 const SeasonalAnime = () => {
     const [searchParams, setSearchParams] = useSearchParams({page: 1});
