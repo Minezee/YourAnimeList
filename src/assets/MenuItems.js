@@ -33,21 +33,22 @@ export const menuItems = [
     },
     {
         name: 'Manga',
+        url: '/manga/top',
         icons: FaBookOpen,
         index: 2,
-        submenu: [
-            {
-                name: 'Top Manga',
-                url: '/manga/top',
-            },
-            {
-                name: 'Seasonal Manga',
-                url: '/',
-            },
-            {
-                name: 'Manga Search',
-                url: '/',
-            },
-        ]
+        // submenu: [
+        //     {
+        //         name: 'Top Manga',
+        //         url: '/manga/top',
+        //     },
+        //     {
+        //         name: 'Seasonal Manga',
+        //         url: '/',
+        //     },
+        //     {
+        //         name: 'Manga Search',
+        //         url: '/',
+        //     },
+        // ]
     },
 ];
