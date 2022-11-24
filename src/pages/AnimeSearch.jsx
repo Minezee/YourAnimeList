@@ -16,11 +16,10 @@ const AnimeSearch = () => {
 
     return (
         <>
-            
                 <>
                     <h2 className="text-white text-center text-sm md:text-xl font-bold notranslate">Search : {query}</h2>
                     <select
-                        className="bg-grey text-white p-2 text-sm mt-0 md:mt-2"
+                        className="bg-grey text-white p-2 text-sm mt-0 md:mt-2 notranslate"
                         onChange={(e) => setType(e.target.value)}>
                         <option value="">All</option>
                         <option value="tv">TV</option>

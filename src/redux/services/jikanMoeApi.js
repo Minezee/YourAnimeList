@@ -14,6 +14,9 @@ export const jikanMoeApi = createApi({
         getSeasonAnimePage: builder.query({query: (page) => `/seasons/now?page=${page}&sfw=false`}),
         getUpcomingAnimePage: builder.query({query: (page) => `/seasons/upcoming?page=${page}&sfw=false&type=movie`}),
         getAnimeSearch: builder.query({query: ({type , query}) => `/anime?q=${query}&type=${type}&min_score=4&order_by=rank&sfw=false`}),
+        getTopManga: builder.query({query: (page) => `/top/manga?page=${page}`}),
+        getFullMangaData: builder.query({query: (id) => `manga/${id}/full`}),
+        getMangaByGenre: builder.query({query: (genre) => `/manga?genres=${genre}&order_by=score&sort=desc&sfw=false`}),
     }),
 });
 
@@ -26,4 +29,7 @@ export const {
     useGetSeasonAnimePageQuery,
     useGetUpcomingAnimePageQuery,
     useGetAnimeSearchQuery,
+    useGetTopMangaQuery,
+    useGetFullMangaDataQuery,
+    useGetMangaByGenreQuery,
 } = jikanMoeApi

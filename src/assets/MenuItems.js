@@ -38,7 +38,7 @@ export const menuItems = [
         submenu: [
             {
                 name: 'Top Manga',
-                url: '/',
+                url: '/manga/top',
             },
             {
                 name: 'Seasonal Manga',

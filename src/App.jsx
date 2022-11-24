@@ -1,4 +1,4 @@
-import { DetailPage, FirstPage, TopAnime, SeasonalAnime, UpcomingAnime, AnimeSearch } from './pages';
+import { DetailPage, FirstPage, TopAnime, SeasonalAnime, UpcomingAnime, AnimeSearch, TopManga, MangaDetail } from './pages';
 import { PageNotFound, Sidebar, Searchbar, Navbar } from './components'
 
 import { Routes, Route } from 'react-router-dom';
@@ -21,8 +21,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<FirstPage />} />
           <Route path="/anime/search" element={<AnimeSearch />} />
-          <Route path="/detail/:id" element={<DetailPage />} />
+          <Route path="/anime/detail/:id" element={<DetailPage />} />
+          <Route path="/manga/detail/:id" element={<MangaDetail />} />
           <Route path="/anime/top" element={<TopAnime />} />
+          <Route path="/manga/top" element={<TopManga />} />
           <Route path="/anime/seasonal" element={<SeasonalAnime />} />
           <Route path="/anime/upcoming" element={<UpcomingAnime />} />
           <Route path="/*" element={<PageNotFound />} />

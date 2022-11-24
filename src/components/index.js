@@ -1,6 +1,7 @@
 import PageNotFound from './PageNotFound';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
+import Detail from './Detail';
 import Searchbar from './Searchbar';
 import BigSlider from './BigSlider';
 import Loading from './Loading';
@@ -16,6 +17,7 @@ export {
 PageNotFound,
 Sidebar,
 Navbar,
+Detail,
 Searchbar,
 BigSlider,
 Error,

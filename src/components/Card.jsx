@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const Card = ({ data }) => (
     <Link
-        to={`/detail/${data.mal_id}`}
+        to={data.type === 'Manga' ?  `/manga/detail/${data.mal_id}` : `/anime/detail/${data.mal_id}`}
         className="hover:opacity-80 relative "
     >
         <img

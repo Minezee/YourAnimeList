@@ -8,7 +8,6 @@ import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
 const Slider = ({ data, isFetching, error }) => {
     const [currentSlide, setCurrentSlide] = useState(1);
     const cardRef = useRef();
-    const [cardWidth, setCardWidth] = useState(1);
     const sliderRef = useRef();
     const [slideWidth, setSlideWidth] = useState(1);
     let sliderMove;
