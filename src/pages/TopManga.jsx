@@ -16,8 +16,6 @@ const TopManga = () => {
 
     if (error) return <Error />
 
-    console.log(page);
-
     return (
         <>
             <h2 className="text-white text-center text-sm md:text-xl font-bold">Top Manga</h2>

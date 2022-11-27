@@ -21,8 +21,6 @@ const MangaDetail = () => {
     if (error) return <Error />
 
     if (dataError) return <Error />
-    
-    console.log(fullData);
 
     return (
         <div className="flex flex-col">
