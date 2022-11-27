@@ -54,7 +54,7 @@ const Container = ({ data, currentSlide }) => {
                             <p className="text-[8px] md:text-[13px] 2xl:text-lg text-justify w-full mt-2 tracking-tighter cut-text">{anime.synopsis}</p>
                             <Link
                                 className="button bottom-2 absolute self-end notranslate"
-                                to={`detail/${anime.mal_id}`}
+                                to={`anime/detail/${anime.mal_id}`}
                             >view more</Link>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ const BigSlider = () => {
     //slider settings
     const maxSlide = 5
     const auto = true;
-    const interval = 20000;
+    const interval = 10000;
     let slideInterval;
 
 
