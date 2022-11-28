@@ -41,7 +41,7 @@ const Page = ({ data, isFetching, setPage, page }) => {
                 {isFetching ?
                     <PageLoad />
                     :
-                    dataList?.filter(name => name.title.toLowerCase().includes(query.toLowerCase())).map((anime) => (
+                    dataList?.map((anime) => (
                         <div
                             key={anime.mal_id}
                             className="min-w-[20%] max-w-[20%] md:max-w-[15%] md:min-w-[15%] mx-2 mb-[10px] md:mx-6 md:mb-6]">
