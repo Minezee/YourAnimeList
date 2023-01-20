@@ -17,9 +17,12 @@
 }
 
 /*remove default style from input type search*/
-input:focus, textarea:focus, select:focus{
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
 }
+
 /*chrome*/
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -29,8 +32,17 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 /*IE*/
-input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+input[type=search]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+input[type=search]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
 
 body {
     padding: 0;
@@ -38,8 +50,18 @@ body {
     box-sizing: border-box;
     font-family: 'Inter';
     /* Hide scrollbar for IE, Edge and Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+    /* Likely future */
 }
 
 /*style for all button*/
@@ -57,20 +79,34 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.cut-text{
-    --max-lines: 7;
+.cut-text {
+    --text-max-lines: 6;
 
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: var(--max-lines);
+    -webkit-line-clamp: var(--text-max-lines);
+
 }
 
-.cut-title{
-        --max-lines: 3;
-    
-        display: -webkit-box;
-        overflow: hidden;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: var(--max-lines);
+.cut-title {
+    --titlemax-lines: 2;
+
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--titlemax-lines);
+}
+
+.cut-card-title {
+    --titlemax-lines: 3;
+
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--titlemax-lines);
+}
+
+.arrow-next{
+    color: white !important;
 }

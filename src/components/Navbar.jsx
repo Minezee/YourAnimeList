@@ -34,7 +34,6 @@ const Navbar = () => {
                             submenu={item.submenu} />}
                     </div>
                 ))}
-                <button className='button ml-2 cursor-not-allowed'>Sign In</button>
             </div>
         </div>
     )

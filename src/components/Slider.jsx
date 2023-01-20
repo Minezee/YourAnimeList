@@ -1,85 +1,56 @@
 import Card from "./Card"
 import SlideLoad from "./SlideLoad"
 import Error from "./Error"
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { useState, useRef, useLayoutEffect } from "react"
-import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
 
 const Slider = ({ data, isFetching, error }) => {
-    const [currentSlide, setCurrentSlide] = useState(1);
-    const cardRef = useRef();
-    const sliderRef = useRef();
-    const [slideWidth, setSlideWidth] = useState(1);
-    let sliderMove;
+    const animeData = data?.slice(0, 24)
+    const windowWidth = window.innerWidth;
 
-    useLayoutEffect(() => {
-        setSlideWidth(sliderRef.current.offsetWidth);
-    }, []);
-
-    function nextSlide() {
-        if (currentSlide === 3) {
-            setCurrentSlide(1)
-        } else {
-            setCurrentSlide(currentSlide + 1)
-        }
-    }
-
-    function prevSlide() {
-        if (currentSlide === 1) {
-            setCurrentSlide(3)
-        } else {
-            setCurrentSlide(currentSlide - 1)
-        }
-    }
-
-    if (slideWidth < 400) {
-        sliderMove = slideWidth + 16;
-    } else {
-        sliderMove = (((slideWidth * 0.112) * 8) + 130);
-    }
-
-    if(error) return <Error />
+    if (error) return <Error />
 
     return (
         <div className="flex items-center justify-center">
             <div className="relative flex items-center h-[105px] md:h-[29vh] w-full md:w-[90%] mt-2 overflow-hidden">
-                <button className="absolute left-[-2px] z-10 h-full">
-                    <RiArrowLeftSLine
-                        className="text-white bg-gradient-to-r from-dark h-full w-5 md:w-7 z-10 hover:animate-slideleft"
-                        onClick={() => {
-                            prevSlide();
-                        }} />
-                </button>
-                <div
-                    ref={sliderRef}
-                    className="flex w-full h-full"
-                    style={{ transform: `translateX(${-(((slideWidth * 0.112) * 8) + 130) * (currentSlide - 1)}px)` }}
+
+                <Swiper
+                    style={{
+                        "--swiper-navigation-color": "#FFFFFF",
+                        "--swiper-navigation-size": "20px",
+                        "--swiper-navigation-height": "100%",
+                    }}
+                    slidesPerView={windowWidth > 1000 ? 8 : 4}
+                    spaceBetween={windowWidth > 1000 ? 30 : 20}
+                    slidesPerGroup={windowWidth > 1000 ? 8 : 4}
+                    initialSlide={windowWidth > 1000 ? 8 : 4}
+                    loop={true}
+                    loopFillGroupWithBlank={true}
+                    navigation={true}
+                    modules={[Navigation]}
+                    className="mySwiper"
+
                 >
                     {isFetching ?
                         <SlideLoad />
                         :
-                        data?.map((anime) => (
-                            <div
-                                ref={cardRef}
-                                className="min-w-[21.7%] md:min-w-[11.2%] h-full mx-[6px] md:mx-[8px]"
+                        animeData?.map((anime) => (
+                            <SwiperSlide
+                                className="h-full"
                                 key={anime.mal_id}
                             >
                                 <Card
                                     data={anime} />
-                            </div>
+                            </SwiperSlide>
                         ))
                     }
-                </div>
+                </Swiper>
 
-                <button className="absolute right-[-2px] h-full z-10">
-                    <RiArrowRightSLine
-                        className="text-white bg-gradient-to-l from-dark h-full w-5 md:w-7 hover:animate-slideright"
-                        onClick={() => {
-                            nextSlide();
-                        }} />
-                </button>
             </div>
-        </div>
+        </div >
     )
 }
 

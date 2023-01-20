@@ -34,6 +34,8 @@ const Page = ({ data, isFetching, setPage, page }) => {
         }
     }
 
+    console.log(dataList);
+
     return (
         <>  
         <hr className="w-full my-2 md:my-4 opacity-60 text-white" />
@@ -74,6 +76,7 @@ const Page = ({ data, isFetching, setPage, page }) => {
                     className="2xl:w-8 h-8"/>
                 </button>
             </div>}
+            <br />
         </>
     )
 }
